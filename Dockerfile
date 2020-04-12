@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.0-cudnn7-runtime-centos8
+FROM nvidia/cuda:10.0-cudnn7-runtime-centos7
 
 CMD ["supervisord", "-c", "/opt/workspace/etc/supervisord.conf"]
 
