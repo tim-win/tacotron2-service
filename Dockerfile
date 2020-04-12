@@ -10,7 +10,7 @@ RUN yum install -y epel-release gcc gcc-c++
 RUN yum install -y python36-devel python36-pip nginx redis git
 RUN pip3.6 install --upgrade pip
 
-RUN pip3.6 install 'tensorflow-gpu==1.15.0' 'setuptools>=41.2'
+RUN pip3.6 install 'tensorflow-gpu==1.15.2' 'setuptools>=41.2'
 
 COPY ./requirements.txt /opt/requirements.txt
 RUN pip3 install -r /opt/requirements.txt
