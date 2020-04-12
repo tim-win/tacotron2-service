@@ -6,10 +6,17 @@ NAME="$(cat ./IMAGE_NAME)"
 IMG_NAME="$NAME"
 TAG="$(cat ./TAG)"
 IMG="${IMG_NAME}:${TAG}"
+
 set +eo pipefail
 CURRENT=$(docker ps | grep "$NAME" | awk '{ print $1 }')
 docker stop "$NAME" && docker rm "$NAME" || echo 'no docker container to remove'
 set -eo pipefail
+
+if [ -z "$@" ]; then
+  ADDTL_FLAGS="t"
+else
+  ADDTL_FLAGS="it"
+fi
 
 docker build -t "${IMG}" .
 
@@ -18,4 +25,5 @@ docker run \
 	-p 8080:8080 \
 	-v $(pwd)/logs/:/opt/workspace/logs \
 	--name "$NAME" \
+	-"$ADDTL_FLAGS" \
 	"${IMG}" $@

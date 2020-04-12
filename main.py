@@ -1,6 +1,11 @@
 # Main.py in the tensorflow-2-test repo.
 # Replace with useful ML code!
 import sys
+import torch
+import tensorflow
+import pysptk
+import numpy as np
+tensorflow.__version__, pysptk.__version__, np.__version__
 
 def main():
 # The following is stolen verbatim  from
